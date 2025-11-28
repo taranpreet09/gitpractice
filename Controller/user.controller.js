@@ -1,15 +1,18 @@
-const User = require("../model/user.model"); // Import your model if you want to use the DB
-
-
 const getUsers = async (req, res) => {
-    
-       
-        res.json({
+    try {
+        return res.json({
             success: true,
-            data: [{ name: "Nitesh" }, { name: "veer" }]
+            data: [
+                { name: "Nitesh" },
+                { name: "Veer" }
+            ]
         });
-
-    
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Something went wrong",
+        });
+    }
 };
 
-module.exports = {getUsers};
+module.exports = { getUsers };
